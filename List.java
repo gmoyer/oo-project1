@@ -26,6 +26,11 @@ public class List<T> {
         }
         return data[i];
     }
+    public void set(T x,int i){
+        // made a set method to help update lists based on index
+        data[i]=x;
+
+    }
 
     public int find(T x) {
         for (int i = 0; i < size; i++) {
