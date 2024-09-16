@@ -1,18 +1,23 @@
 public class Brewery {
     public static void main(String args[]){
-        System.out.println("hello world");
-        List<Integer> l1 = new List<Integer>();
-        l1.add(4);
-        l1.add(5);
-        l1.add(7);
-        l1.add(9);
-        l1.add(10);
-        l1.remove(7);
-        System.out.println(l1.get(0));
-        System.out.println(l1.get(1));
-        System.out.println(l1.get(2));
-        System.out.println(l1.get(3));
-        System.out.println(l1.get(4));
+        ContainerManager cm = new ContainerManager(3);
+
+        Container c1 = cm.getCleanContainer();
+        System.out.println(c1);
+        System.out.println(c1.dirty);
+        c1.use();
+        System.out.println(c1.dirty);
+
+        Container c2 = cm.getCleanContainer();
+        System.out.println(c2.dirty);
+        c2.use();
+
+        Container c3 = cm.getCleanContainer();
+        System.out.println(c3.dirty);
+        c3.use();
+
+        cm.getCleanContainer();
+
 
     }
 }
