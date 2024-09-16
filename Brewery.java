@@ -1,4 +1,11 @@
 public class Brewery {
+
+    Inventory inventory;
+
+    public Brewery(){
+        inventory = new Inventory();
+    }
+
     public static void main(String args[]){
         ContainerManager cm = new ContainerManager(3);
 
@@ -19,5 +26,12 @@ public class Brewery {
         cm.getCleanContainer();
 
 
+    }
+
+    public void createBatch(Recipe recipe, int servings){
+        List<Ingredient> ingredients = recipe.getIngredients(servings);
+        for(int i = 0; i < ingredients.size; i++){
+            inventory.remove(ingredients.get(i));
+        }
     }
 }

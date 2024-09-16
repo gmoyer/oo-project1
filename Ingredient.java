@@ -18,4 +18,8 @@ public class Ingredient {
         quantity -= amount;
         return new Ingredient(name, amount);
     }
+
+    public void add(int amount) {
+        quantity += amount;
+    }
 }

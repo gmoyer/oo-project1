@@ -20,4 +20,14 @@ public class Recipe {
             System.out.println(ingredients.get(i));
         }
     }
+
+    public List<Ingredient> getIngredients(int servings){
+        List<Ingredient> newIngredients = new List<Ingredient>();
+        for(int i = 0; i < ingredients.size; i++){
+            Ingredient ingredient = ingredients.get(i);
+            int newQuantity = ingredient.quantity * servings / this.servings;
+            newIngredients.add(new Ingredient(ingredient.name, newQuantity));
+        }
+        return newIngredients;
+    }
 }
