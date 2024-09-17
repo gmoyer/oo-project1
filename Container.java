@@ -20,7 +20,7 @@ public class Container {
         }
 
     }
-
+    //mark the container as used/dirty
     public void use(){
         if(!dirty){
             System.out.println("Using this container!");

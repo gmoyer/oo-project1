@@ -4,7 +4,7 @@ public class ContainerManager {
 /*
 * Keep track of our clean containers
 *
- */
+*/
     List<Container> containers;
 
 
@@ -17,9 +17,8 @@ public class ContainerManager {
 
     /*
     * get a clean container from our containers list.
-    * return the container we grapped
-
-     */
+    * return the container we grabbed
+    */
     public Container getCleanContainer(){
         for(int i = 0; i < containers.size; i++){
             if(!containers.get(i).dirty){
@@ -32,7 +31,7 @@ public class ContainerManager {
     }
 
     /*
-    * Take your dirty containers and clan them
+    * Take your dirty containers and clean them
     * Then, add the container to the containers list
     */
     public void cleanDirtyContainers(){
@@ -44,7 +43,4 @@ public class ContainerManager {
         }
 
     }
-
-
-
 }
