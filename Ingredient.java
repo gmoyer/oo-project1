@@ -7,10 +7,17 @@ public class Ingredient {
         this.quantity = quantity;
     }
 
+
+    /*
+    * returns a user friendly string
+    */
     public String toString(){
         return name + " - " + quantity;
     }
 
+    /*
+    * subtracts an amount off a certain quantity f an ingredient
+     */
     public boolean subtract(int amount){
         if(amount > quantity){
             return false;
@@ -19,6 +26,9 @@ public class Ingredient {
         return true;
     }
 
+    /*
+    * adds the amount to our quantity of an ingredient
+     */
     public void add(int amount) {
         quantity += amount;
     }
