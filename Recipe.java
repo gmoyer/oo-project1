@@ -19,6 +19,7 @@ public class Recipe {
         for(int i = 0; i < ingredients.size; i++){
             System.out.println(ingredients.get(i));
         }
+        System.out.println();
     }
 
     public List<Ingredient> getIngredients(int servings){

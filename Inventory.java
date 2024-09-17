@@ -8,9 +8,11 @@ public class Inventory {
         ingredientList.add(ingredient);
     }
     public void printInventory(){
+        System.out.println("-- Inventory --");
         for (int i = 0; i < ingredientList.size; i++) {
             System.out.println(ingredientList.get(i));
         }
+        System.out.println();
     }
     public void remove(Ingredient ingredient){
         Ingredient stored = findIngredient(ingredient);
@@ -19,6 +21,7 @@ public class Inventory {
             if (!result) {
                 System.out.println("Not enough " + ingredient.name + " in inventory");
                 restock();
+                remove(ingredient);
             }
         } else {
             System.out.println("Ingredient not found in inventory");
