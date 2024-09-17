@@ -1,9 +1,11 @@
 public class Brewery {
 
     Inventory inventory;
+    ContainerManager containerManager;
 
     public Brewery(){
         inventory = new Inventory();
+        containerManager = new ContainerManager(10);
     }
 
     public static void main(String args[]){
@@ -27,18 +29,8 @@ public class Brewery {
         System.out.println();
         library.addRecipe(recipe1);
         library.addRecipe(recipe2);
-        //library.printRecipeList();
-        //library.removeRecipe(recipe1);
         library.printRecipeList();
         System.out.println(library.getRecipe("apple pie"));
-
-
-
-
-
-
-
-
     }
 
     public void createBatch(Recipe recipe, int servings){
@@ -46,6 +38,8 @@ public class Brewery {
         for(int i = 0; i < ingredients.size; i++){
             inventory.remove(ingredients.get(i));
         }
+        Container container = containerManager.getCleanContainer(); // get a container to put the batch in
+        container.use();
     }
 
 }

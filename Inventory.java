@@ -13,30 +13,30 @@ public class Inventory {
         }
     }
     public void remove(Ingredient ingredient){
-        //Removes ingredient from ingredientList
-        ingredientList.remove(ingredient);
-    }
-    public void addToThreshold(Ingredient ingredient, int amount){
-        //Adds amount to ingredient quantity
-        ingredient.add(amount);
-    }
-
-    public void subToThreshold(Ingredient ingredient, int amount){
-        //subtracts amount from ingredient quantity and removes ingredient if amount exceeds quantity
-        if(ingredient.split(amount)==null){
-            remove(ingredient);
-            System.out.println("Ingredient ran out!");
-        }else {
-            ingredient.split(amount);
+        Ingredient stored = findIngredient(ingredient);
+        if (stored != null) {
+            boolean result = stored.subtract(ingredient.quantity);
+            if (!result) {
+                System.out.println("Not enough " + ingredient.name + " in inventory");
+                restock();
+            }
+        } else {
+            System.out.println("Ingredient not found in inventory");
         }
     }
-    public void findIngredient(Ingredient ingredient){
+    public Ingredient findIngredient(Ingredient ingredient){
         for (int i = 0; i < ingredientList.size; i++) {
-            if(ingredientList.get(i) == ingredient){
-                System.out.println("Ingredient found: "+ ingredient);
-
+            if(ingredientList.get(i).name.equals(ingredient.name)){
+                return ingredientList.get(i);
             }
-            System.out.println("Ingredient not found!");
+        }
+        return null;
+    }
+
+    public void restock(){
+        System.out.println("Restocking all ingredients by 100");
+        for (int i = 0; i < ingredientList.size; i++) {
+            ingredientList.get(i).add(100);
         }
     }
 }

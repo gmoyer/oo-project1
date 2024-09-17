@@ -12,7 +12,7 @@ public class Library {
 
     public Recipe getRecipe(String name) {
         for (int i = 0; i < recipeList.size; i++) {
-            if (recipeList.get(i).name == name){
+            if (recipeList.get(i).name.equals(name)) {
                 return recipeList.get(i);
             }
         }

@@ -11,12 +11,12 @@ public class Ingredient {
         return name + " - " + quantity;
     }
 
-    public Ingredient split(int amount){
+    public boolean subtract(int amount){
         if(amount > quantity){
-            return null;
+            return false;
         }
         quantity -= amount;
-        return new Ingredient(name, amount);
+        return true;
     }
 
     public void add(int amount) {
