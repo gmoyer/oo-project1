@@ -10,6 +10,7 @@ public class Brewery {
         library = new Library();
     }
 
+    // Main method that creates a brewery and runs some tests
     public static void main(String args[]){
         Brewery brewery = new Brewery();
 
@@ -52,6 +53,7 @@ public class Brewery {
         brewery.inventory.printInventory();
     }
 
+    // Create a batch of a recipe for a certain number of servings
     public void createBatch(Recipe recipe, int servings){
         System.out.println("Creating batch of " + recipe.name + " for " + servings + " servings");
         List<Ingredient> ingredients = recipe.getIngredients(servings);
