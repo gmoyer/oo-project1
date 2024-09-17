@@ -7,12 +7,19 @@ public class List<T> {
         data = (T[]) new Object[2];
     }
 
+    /*
+    * add to a list
+     */
     public void add(T x){
         data[size++] = x;
         if(size == data.length){
             doubleLen();
         }
     }
+
+    /*
+    * double the length of a list to make sure we have room
+     */
     private void doubleLen(){
         T[] newData = (T[]) new Object[data.length * 2];
         for(int i = 0; i < size; i++){
@@ -20,18 +27,29 @@ public class List<T> {
         }
         data = newData;
     }
+
+    /*
+    * get an index in our list
+    * if it is larger than size, throw error
+     */
     public T get(int i){
         if (i >= size) {
             throw new ArrayIndexOutOfBoundsException();
         }
         return data[i];
     }
+
+    /*
+    * help update lists based on index
+     */
     public void set(T x,int i){
-        // made a set method to help update lists based on index
         data[i]=x;
 
     }
 
+    /*
+    * find an item in a list
+     */
     public int find(T x) {
         for (int i = 0; i < size; i++) {
             if (data[i] == x) {
@@ -40,7 +58,9 @@ public class List<T> {
         }
         return -1;
     }
-
+    /*
+    * remove an item from a list
+     */
     public boolean remove(T x) {
         int index = find(x);
         // If we do not find the element, return false
