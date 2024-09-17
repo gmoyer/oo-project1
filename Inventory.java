@@ -1,48 +1,42 @@
-import java.util.Locale;
-
 public class Inventory {
-    List<String> stock = new List<>();//tracks item names
-    List<Integer> stockThreshold = new List<>();//tracks the items threshold based on index
+    List<Ingredient> ingredientList;
+    public Inventory(){
+        ingredientList = new List<>();
+    }
 
-
-    public void addToInventory(String name, int amount){
-        //Converts parameter name to lowercase and adds to list stock, parameter amount is added to stockThreshold
-        String newItem = name.toLowerCase();
-        stock.add(newItem);
-        stockThreshold.add(amount);
+    public void addIngredient(Ingredient ingredient){
+        ingredientList.add(ingredient);
     }
-    public void removeInventory(String name){
-        //Removes name from stock list and amount
-        String newItem = name.toLowerCase();
-        int newItemIndex = findItem(name);
-        int threshold = stockThreshold.get(newItemIndex);
-        stock.remove(newItem);
-        stockThreshold.remove(threshold);
-    }
-    public void addToThreshold(String name, int amount){
-        //for stock variable name, add amount to previous threshold
-        String newItem = name.toLowerCase();
-        int newItemIndex = findItem(newItem);
-        int threshold = stockThreshold.get(newItemIndex);
-        stockThreshold.set(threshold+amount,newItemIndex);
-    }
-    public void subToThreshold(String name, int amount){
-        //for stock variable name, subtract amount to previous threshold
-        String newItem = name.toLowerCase();
-        int newItemIndex = findItem(name);
-        int threshold = stockThreshold.get(newItemIndex);
-        stockThreshold.set(threshold-amount,newItemIndex);
-        if(stockThreshold.get(newItemIndex)<0){
-            removeInventory(newItem);
+    public void printInventory(){
+        for (int i = 0; i < ingredientList.size; i++) {
+            System.out.println(ingredientList.get(i));
         }
     }
-    public String getInventory(int i){
-        //returns the index variable for both stock and stockThreshold lists - output:pinapple3
-        return stock.get(i) + stockThreshold.get(i);
+    public void remove(Ingredient ingredient){
+        //Removes ingredient from ingredientList
+        ingredientList.remove(ingredient);
     }
-    public int findItem(String name){
-        //finds the item in the stock list
-        return stock.find(name);
+    public void addToThreshold(Ingredient ingredient, int amount){
+        //Adds amount to ingredient quantity
+        ingredient.add(amount);
     }
 
+    public void subToThreshold(Ingredient ingredient, int amount){
+        //subtracts amount from ingredient quantity and removes ingredient if amount exceeds quantity
+        if(ingredient.split(amount)==null){
+            remove(ingredient);
+            System.out.println("Ingredient ran out!");
+        }else {
+            ingredient.split(amount);
+        }
+    }
+    public void findIngredient(Ingredient ingredient){
+        for (int i = 0; i < ingredientList.size; i++) {
+            if(ingredientList.get(i) == ingredient){
+                System.out.println("Ingredient found: "+ ingredient);
+
+            }
+            System.out.println("Ingredient not found!");
+        }
+    }
 }

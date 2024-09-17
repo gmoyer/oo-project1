@@ -7,23 +7,36 @@ public class Brewery {
     }
 
     public static void main(String args[]){
-        ContainerManager cm = new ContainerManager(3);
+        Ingredient ingredient = new Ingredient("apple", 20);
+        Ingredient ingredient1 = new Ingredient("flour", 10);
+        Ingredient ingredient2 = new Ingredient("sugar", 10);
 
-        Container c1 = cm.getCleanContainer();
-        System.out.println(c1);
-        System.out.println(c1.dirty);
-        c1.use();
-        System.out.println(c1.dirty);
+        Ingredient ingredient3 = new Ingredient("wheat", 50);
+        Ingredient ingredient4 = new Ingredient("water", 100);
+        Ingredient ingredient5 = new Ingredient("yeast", 15);
+        Library library = new Library();
+        Recipe recipe1 = new Recipe("apple pie", 5);
+        recipe1.addIngredient(ingredient);
+        recipe1.addIngredient(ingredient1);
+        recipe1.addIngredient(ingredient2);
+        Recipe recipe2 = new Recipe("beer",20);
+        recipe2.addIngredient(ingredient3);
+        recipe2.addIngredient(ingredient4);
+        recipe2.addIngredient(ingredient5);
+        recipe2.printRecipe();
+        System.out.println();
+        library.addRecipe(recipe1);
+        library.addRecipe(recipe2);
+        //library.printRecipeList();
+        //library.removeRecipe(recipe1);
+        library.printRecipeList();
+        System.out.println(library.getRecipe("apple pie"));
 
-        Container c2 = cm.getCleanContainer();
-        System.out.println(c2.dirty);
-        c2.use();
 
-        Container c3 = cm.getCleanContainer();
-        System.out.println(c3.dirty);
-        c3.use();
 
-        cm.getCleanContainer();
+
+
+
 
 
     }
@@ -34,4 +47,5 @@ public class Brewery {
             inventory.remove(ingredients.get(i));
         }
     }
+
 }
