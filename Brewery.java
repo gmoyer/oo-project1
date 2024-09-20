@@ -21,7 +21,7 @@ public class Brewery {
     }
 
     // Main method that creates a brewery and runs some tests
-    public static void main(String args[]){
+    public static void main(String[] args){
         Brewery brewery = new Brewery();
 
         // Add ingredients to inventory

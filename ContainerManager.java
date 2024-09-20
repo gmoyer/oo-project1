@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class ContainerManager {
 /*
 * Keep track of our clean containers
